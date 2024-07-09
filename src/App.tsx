@@ -1,15 +1,28 @@
-import { faGoogle, faMicrosoft, faSearchengin } from "@fortawesome/free-brands-svg-icons";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { Button, Input } from "antd";
-import { getSearchText } from "./ConvertSearch";
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { Button, Input } from 'antd';
+import { getSearchText, performSearch } from './ConvertSearch';
+import { Engines } from './helpers';
 
 function App() {
+  const searchURL = 'https://duckduckgo.com/?q=parse+url+javascript&t=osx&ia=web';
   return (
-    <div>
-      <Input defaultValue={getSearchText('https://duckduckgo.com/?q=parse+url+javascript&t=osx&ia=web')}/>
-      <Button type="primary" icon={<FontAwesomeIcon icon={faGoogle} />}>Google</Button>
-      <Button type="primary" icon={<FontAwesomeIcon icon={faMicrosoft} />}>Bing</Button>
-      <Button type="primary" icon={<FontAwesomeIcon icon={faSearchengin} />}>DuckDuckGo</Button>
+    <div style={{ 
+      display: 'flex',
+      flexDirection: 'column',
+      alignItems: 'center',
+      gap: '10px'
+    }}>
+      <Input defaultValue={getSearchText(searchURL)} />
+      {Engines.map(engine => (
+        <Button
+          key={engine.value}
+          type="primary"
+          icon={<FontAwesomeIcon icon={engine.icon} />}
+          onClick={() => window.open(performSearch(engine.value, searchURL))}
+        >
+          {engine.name}
+        </Button>
+      ))}
     </div>
   );
 }

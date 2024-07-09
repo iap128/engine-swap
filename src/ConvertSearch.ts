@@ -2,12 +2,11 @@ import { SearchEngines } from "./helpers"
 
 /**
  * 
- * @param source search engine we're currently using
  * @param destination search engine we want to use
  * @param query the URL of the current search
  * @returns the URL of the new search
  */
-export const performSearch = (source: SearchEngines, destination: SearchEngines, query: string): string => {
+export const performSearch = (destination: SearchEngines, query: string): string => {
     const searchText = getSearchText(query);
     const url = buildURL(destination, searchText);
 
