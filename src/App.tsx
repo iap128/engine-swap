@@ -1,24 +1,15 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import { faGoogle, faMicrosoft, faSearchengin } from "@fortawesome/free-brands-svg-icons";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { Button, Input } from "antd";
+import { getSearchText } from "./ConvertSearch";
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div>
+      <Input defaultValue={getSearchText('https://duckduckgo.com/?q=parse+url+javascript&t=osx&ia=web')}/>
+      <Button type="primary" icon={<FontAwesomeIcon icon={faGoogle} />}>Google</Button>
+      <Button type="primary" icon={<FontAwesomeIcon icon={faMicrosoft} />}>Bing</Button>
+      <Button type="primary" icon={<FontAwesomeIcon icon={faSearchengin} />}>DuckDuckGo</Button>
     </div>
   );
 }
