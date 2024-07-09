@@ -16,6 +16,11 @@ export const performSearch = (destination: SearchEngines, query: string): string
 export const getSearchText = (query: string): string => {
     const url = new URL(query);
     const searchParams = url.searchParams;
+    
+    // Yahoo uses 'p' instead of 'q'
+    if (url.host === 'search.yahoo.com') {
+        return searchParams.get('p') || '';
+    }
     return searchParams.get('q') || '';
 };
 
@@ -29,5 +34,7 @@ const buildURL = (destionation: SearchEngines, query: string): string => {
             return 'https://www.bing.com/search?q=' + encodedQuery;
         case SearchEngines.DuckDuckGo:
             return 'https://duckduckgo.com/?q=' + encodedQuery;
+        case SearchEngines.Yahoo:
+            return 'https://search.yahoo.com/search?p=' + encodedQuery;
     }
 };
