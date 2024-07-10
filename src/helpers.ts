@@ -1,4 +1,5 @@
-import { faGoogle, faMicrosoft, faSearchengin, faYahoo, IconDefinition } from "@fortawesome/free-brands-svg-icons";
+import { faGoogle, faMicrosoft, faYahoo, IconDefinition } from "@fortawesome/free-brands-svg-icons";
+import { faSearch } from "@fortawesome/free-solid-svg-icons";
 
 export enum SearchEngines {
     Google = "Google",
@@ -32,7 +33,7 @@ export const Engines: SearchEngineItem[] = [
     {
         name: 'DuckDuckGo',
         value: SearchEngines.DuckDuckGo,
-        icon: faSearchengin
+        icon: faSearch
     }
 ];
 
@@ -46,6 +47,7 @@ function queryTabURL() {
               currentWindow: true,
             },
             tabs => {
+              console.log(tabs);
               // use `url` here inside the callback because it's asynchronous!
               resolve(tabs[0].url);
             },
@@ -58,5 +60,6 @@ function queryTabURL() {
   
   export const fetchTabURL = async () => {
     let responseURL = await queryTabURL();
+    console.log(responseURL);
     return responseURL;
   };

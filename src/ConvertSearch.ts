@@ -7,13 +7,16 @@ import { SearchEngines } from "./helpers"
  * @returns the URL of the new search
  */
 export const performSearch = (destination: SearchEngines, query: string): string => {
-    const searchText = getSearchText(query);
-    const url = buildURL(destination, searchText);
+    const url = buildURL(destination, query);
 
     return url;
 };
 
 export const getSearchText = (query: string): string => {
+    if (!query) {
+        return '';
+    }
+    
     const url = new URL(query);
     const searchParams = url.searchParams;
     
@@ -24,10 +27,10 @@ export const getSearchText = (query: string): string => {
     return searchParams.get('q') || '';
 };
 
-const buildURL = (destionation: SearchEngines, query: string): string => {
+const buildURL = (destination: SearchEngines, query: string): string => {
     const encodedQuery = encodeURIComponent(query);
 
-    switch (destionation) {
+    switch (destination) {
         case SearchEngines.Google:
             return 'https://www.google.com/search?q=' + encodedQuery;
         case SearchEngines.Bing:

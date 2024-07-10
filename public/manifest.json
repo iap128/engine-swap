@@ -10,8 +10,9 @@
   },
   "permissions": ["tabs"],
   "icons": {
-    "16": "logo512.png",
-    "48": "logo512.png",
-    "128": "logo512.png"
+    "16": "engine.png",
+    "32": "engine.png",
+    "48": "engine.png",
+    "128": "engine.png"
   }
 }
