@@ -1,5 +1,5 @@
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { Button, Divider, Input, Typography } from 'antd';
+import { Button, Divider, Flex, Image, Input, Typography } from 'antd';
 import { getSearchText, performSearch } from './ConvertSearch';
 import { Engines, fetchTabURL } from './helpers';
 import { useEffect, useState } from 'react';
@@ -17,16 +17,15 @@ function App() {
   }, []);
 
   return (
-    <div
+    <Flex vertical align='center' gap={10}
       style={{
-        display: 'flex',
-        flexDirection: 'column',
-        alignItems: 'center',
-        gap: '10px',
-        margin: '0px 20px',
+        margin: '0px 20px 5px 20px',
       }}
     >
-      <Typography.Title>Engine Swap</Typography.Title>
+      <Flex align='center' gap={10}>
+        <Image preview={false} width={50} src="./engine.png" />
+        <Typography.Title>Engine Swap</Typography.Title>
+      </Flex>
       <Input
         size="large"
         value={searchText}
@@ -53,7 +52,7 @@ function App() {
           Ryan Hunter
         </Button>
       </div>
-    </div>
+    </Flex>
   );
 }
 
