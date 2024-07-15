@@ -48,7 +48,7 @@ function App() {
       <div>
         <Divider />
         Made with ❤️ by{' '}
-        <Button type="dashed" href="https://n818pe.com">
+        <Button type="dashed" onClick={() => window.open("https://n818pe.com")}>
           Ryan Hunter
         </Button>
       </div>
